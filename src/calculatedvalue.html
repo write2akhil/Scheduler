@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.13.5/css/ui.jqgrid.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.13.5/js/jquery.jqgrid.min.js"></script>
+  <title>js-tutorials.com : JqGrid jquery simple example and uses </title>
+</head>
+<body>
+  <div class="container" style="padding:250px 250px;">
+    <h1>jQuery jqGrid listing using JSON Data</h1>
+	<table id="photos" class="display" cellspacing="0" width="100%">
+    </table>
+	<div id="pager2"></div>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+	$("#photos").jqGrid({
+		url:'http://localhost:8051/getConsumptionThingId/4B5060B173CD40A1A000D6B21BA63BB7',
+		datatype: "json",
+		colNames:['_time','UtilisationBlueClr','UtilisationGreenClr','CurrentPowerConsumption','AverageGreenBrightness','MinutesGreenActive','MinutesRedActive','UtilisationRedClr','Utilisation','PowerConsumptionInCurrentCycle','AverageBlueBrightness','PowerTotal24hours','AverageRedBrightness','MinutesBlueActive','TimeOn','PowerTotalWeek'],
+		colModel:[
+		{name:'_time',index:'_time', width:180},
+		{name:'UtilisationBlueClr',index:'UtilisationBlueClr', width:55},
+		{name:'UtilisationGreenClr',index:'UtilisationGreenClr', width:55},
+		{name:'CurrentPowerConsumption',index:'CurrentPowerConsumption', width:55},
+
+	  	{name:'AverageGreenBrightness',index:'AverageGreenBrightness', width:55},
+		{name:'MinutesGreenActive',index:'MinutesGreenActive', width:55},
+		{name:'MinutesRedActive',index:'MinutesRedActive', width:55},
+		{name:'UtilisationRedClr',index:'UtilisationRedClr', width:55},
+		{name:'Utilisation',index:'Utilisation', width:55},
+		{name:'PowerConsumptionInCurrentCycle',index:'PowerConsumptionInCurrentCycle', width:55},
+		{name:'AverageBlueBrightness',index:'AverageBlueBrightness', width:55},
+		{name:'PowerTotal24hours',index:'PowerTotal24hours', width:55},
+		{name:'AverageRedBrightness',index:'AverageRedBrightness', width:55},
+		{name:'MinutesBlueActive',index:'MinutesBlueActive', width:55},
+		{name:'TimeOn',index:'TimeOn', width:55},
+		{name:'PowerTotalWeek',index:'PowerTotalWeek', width:55},
+		],
+		rowNum:50,
+		loadonce: true,
+		rowList:[50,100,150],
+		pager: '#pager2',
+		sortname: '_timeid',
+		viewrecords: true,
+		sortorder: "desc",
+		caption:""
+	});
+	$("#photos").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
+
+  });
+</script>

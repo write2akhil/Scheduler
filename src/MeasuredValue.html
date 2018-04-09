@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.13.5/css/ui.jqgrid.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.13.5/js/jquery.jqgrid.min.js"></script>
+ <title>js-tutorials.com : JqGrid jquery simple example and uses </title>
+</head>
+<body>
+ <div class="container" style="padding:10px 250px;">
+
+   <table id="photos" class="display" cellspacing="0" width="100%">
+   </table>
+   <div id="pager2"></div>
+ </div>
+</body>
+</html>
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("#photos").jqGrid({
+       url:'http://localhost:3033/getRHHueLightInfoByThing/6CD8528F892641C7997C8BB8A2A5722D',
+       datatype: "json",
+
+       
+       //colNames:['_time','connected','hclighttemp','brightness','color_x','color_y','status'],
+       colNames:['_time','connected','rhtest1lighttemp','brightness','status'],
+       colModel:[
+       {name:'_time',index:'_time', width:180},
+       {name:'connected',index:'connected', width:180},
+       {name:'rhtest1lighttemp',index:'rhtest1lighttemp', width:180},
+       {name:'brightness',index:'brightness', width:180}
+     
+      //   , {name:'color_x',index:'color_x', width:55},
+      //  {name:'color_y',index:'color_y', width:55},
+      , {name:'status',index:'status', width:55}
+       ],
+       rowNum:100,
+       loadonce: true,
+       rowList:[100,200,300],
+       pager: '#pager2',
+       sortname: '_timeid',
+       viewrecords: true,
+       sortorder: "desc",
+       caption:""
+   });
+   $("#photos").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
+  
+ });
+</script>
